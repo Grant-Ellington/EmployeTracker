@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/Grant-Ellington/EmployeTracker#readme",
   "dependencies": {
-    "console.table": "^0.10.0"
-  }
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.2.5"}
 }
