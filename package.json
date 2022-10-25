@@ -1,0 +1,23 @@
+{
+  "name": "employeetracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grant-Ellington/EmployeTracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grant-Ellington/EmployeTracker/issues"
+  },
+  "homepage": "https://github.com/Grant-Ellington/EmployeTracker#readme",
+  "dependencies": {
+    "console.table": "^0.10.0"
+  }
+}
