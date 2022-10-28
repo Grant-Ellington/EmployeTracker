@@ -3,14 +3,16 @@ const startingQuestion = [
         type: 'list',
         name: 'options',
         message: 'Choose from the following options.',
-        Choices:[
+        choices:[
             'view all departments',
             'view all roles',
             'view all employees',
             'add a department',
             'add a role',
             'add an employee',
-            'update'
-        ] 
+            'update an employee role'
+        ]
     }
-]
+];
+
+module.exports = startingQuestion;
