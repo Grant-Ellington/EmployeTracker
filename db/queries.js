@@ -1,8 +1,33 @@
 const connection = require('./connections');
 
+
 function viewAllDepartments () {
-   return connection.promise().query('SELECT * FROM department') 
+   let viewAllSQL = connection.promise().query('SELECT department.id AS id, department.department_name AS department FROM department');
+   console.log(viewAllSQL)
+    return viewAllSQL
 }
 
-module.exports = { viewAllDepartments, 
+function viewAllRoles () {
+    let viewAllSQL = connection.promise().query('SELECT * FROM role')
+    return viewAllSQL
+}
+
+function viewAllEmployees() {
+    let viewAllSQL = connection.promise().query('SELECT * FROM employee')
+    return viewAllSQL
+}
+
+function addRole() {
+
+}
+function addEmployee () {
+
+}
+
+function addEmployeeRole(){
+
+}
+
+
+module.exports = { viewAllDepartments, viewAllRoles, viewAllEmployees, addRole, addEmployee, addEmployeeRole 
 }

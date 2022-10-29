@@ -14,12 +14,19 @@ function init (){
     if(data.options === 'view all departments'){
       queries.viewAllDepartments().then((data)=>{
         let department = [data]
+        //console.log(department)
         console.table(department)
       })
     }else if(data.options === 'view all roles'){
-      console.log(data.options)
+      queries.viewAllRoles().then((data)=> {
+        let sql = [data]
+        console.table(sql)
+      })
     }else if(data.options === 'view all employees'){
-      console.log(data.options)
+      queries.viewAllEmployees().then(data=>{
+        let sql = [data]
+        console.table(sql)
+      })
     }else if(data.options === 'add a department'){
       console.log(data.options)
     }else if(data.options === 'add a role'){
