@@ -31,8 +31,8 @@ function init (){
       })
     }else if(data.options === 'add a department') {
       inquirer.prompt(addDepartmentQuestions).then((data)=> {
-        console.log(data)
-        queries.addRole(data)
+        //console.log(data)
+        queries.addDepartment(data)
       }).then((data)=>{
         console.log(data)
       })
