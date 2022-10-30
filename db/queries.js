@@ -21,7 +21,7 @@ function viewAllEmployees() {
 }
 
 function addDepartment(data){
-    let sql = `INSERT INTO depoartment( id, department_name) VALUES(6, ${data.departmentName})`
+    let sql = `INSERT INTO department( id, department_name) VALUES(6, ${data.departmentName});`
     
     return connection.promise().query(sql)
 
@@ -29,6 +29,8 @@ function addDepartment(data){
 
 function addRole() {
     let sql = `INSERT INTO role(id, title, salary, depratment_id) VALUES( 6, ` 
+
+    return connection.promise().query(sql)
 }
 function addEmployee () {
 
