@@ -13,22 +13,28 @@ function init (){
   inquirer.prompt(startingQuestions).then((data)=>{
     if(data.options === 'view all departments'){
       queries.viewAllDepartments().then((data)=>{
-        let department = [data]
-        //console.log(department)
-        console.table(department)
+        alldepartments = data[0]
+        console.table(alldepartments)
+        init();
       })
     }else if(data.options === 'view all roles'){
       queries.viewAllRoles().then((data)=> {
-        let sql = [data]
+        let sql = data[0]
         console.table(sql)
+        init()
       })
     }else if(data.options === 'view all employees'){
       queries.viewAllEmployees().then(data=>{
-        let sql = [data]
+        let sql = data[0]
         console.table(sql)
+        init();
       })
-    }else if(data.options === 'add a department'){
-      console.log(data.options)
+    }else if(data.options === 'add a department') {
+      inquirer.prompt(addDepartmentQuestions).then((data)=> {
+        queries.addRole(data)
+      }).then((data)=>{
+        console.log(data)
+      })
     }else if(data.options === 'add a role'){
       console.log(data.options)
     }else if(data.options === 'add an employee'){

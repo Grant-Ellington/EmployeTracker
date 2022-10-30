@@ -1,3 +1,5 @@
+USE test;
+
 INSERT INTO department(id, department_name)
 VALUES (001,'cast'),(002, 'crew');
 
