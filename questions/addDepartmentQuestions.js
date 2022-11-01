@@ -1,4 +1,4 @@
-const addDepartmentQuestion = [
+const addDepartmentQuestions = [
     {
         type: 'input',
         name: 'departmentName',
@@ -6,4 +6,4 @@ const addDepartmentQuestion = [
     }
 ];
 
-module.exports = addDepartmentQuestion
+module.exports = addDepartmentQuestions

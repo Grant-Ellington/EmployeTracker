@@ -1,11 +1,11 @@
 USE test;
 
-INSERT INTO department(id, department_name)
-VALUES (001,'cast'),(002, 'crew');
+INSERT INTO department( department_name)
+VALUES ('cast'),('crew');
 
-INSERT INTO role(id, title, salary, department_id )
-VALUES (001, 'contestant', 10000, 001), (002, 'host', 100000, 002), (003, 'director',200000, 002),(004, 'editor', 80000, 002),(005, 'manager', 200000, 002);
+INSERT INTO role( title, salary, department_id )
+VALUES ( 'contestant', 10000, 001), ( 'host', 100000, 002), ( 'director',200000, 002),( 'editor', 80000, 002),('manager', 200000, 002);
 
-INSERT INTO employee(id, first_name, last_name, role_id, manager_id)
-VALUES (001, 'Violet', "Tchaki", 001, 005), (002, 'Trixie', 'Mattel', 001, 005), (003, 'RuPaul', 'Charles', 002, 005), (004, 'Jim', 'Halper', 003, 005), (005, 'Dwight', 'Schrute', 005, null), (006, 'Pam', 'Halper', 004, 005);
-        
+INSERT INTO employee(first_name, last_name, role_id, manager_id)
+VALUES ( 'Violet', "Tchaki", 001, 005), ( 'Trixie', 'Mattel', 001, 005), ( 'RuPaul', 'Charles', 002, 005), ('Jim', 'Halper', 003, 005), ( 'Dwight', 'Schrute', 005, null), ('Pam', 'Halper', 004, 005);
+    

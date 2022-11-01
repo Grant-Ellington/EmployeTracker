@@ -31,21 +31,74 @@ function init (){
       })
     }else if(data.options === 'add a department') {
       inquirer.prompt(addDepartmentQuestions).then((data)=> {
-        //console.log(data)
-        queries.addDepartment(data)
-      }).then((data)=>{
-        console.log(data)
+        //console.log(JSON.stringify(data.departmentName) + 'help')
+        queries.addDepartment(JSON.stringify(data.departmentName))
+        init();
       })
     }else if(data.options === 'add a role'){
-      console.log(data.options)
-    }else if(data.options === 'add an employee'){
-      console.log(data.options)
-    }else if(data.options === 'add and employee role'){
-      console.log(data.options)
-    }else{
-      console.log(data.options)
+      inquirer.prompt(addRoleQuestions).then((data)=>{
+        let inputs = data
+      queries.addRole(inputs)
+      init();
+      })
+    } else if(data.options === 'add an employee'){
+      inquirer.prompt(addEmployeeQuestions).then((data)=>{
+        let inputs = data
+        queries.addEmployee(inputs)
+        init();
+      })
+    }else if(data.options === 'update an employee role'){
+      queries.selectRoleName().then((data)=>{
+        let options = data[0]
+        let roleArr = []
+        options.forEach((options)=>roleArr.push(`${options.id} `))
+        return roleArr
+      }).then((data)=>{
+        roleOptions = data
+        queries.selectEmployeeNames().then((data)=>{
+          let options = data[0]
+          let employeeArr = []
+          options.forEach((options)=>employeeArr.push(`${options.last_name}`))
+          questionArr = [employeeArr, roleOptions]
+          return questionArr
+        }).then((data)=>{
+          let questionArr = data
+          inquirer.prompt([
+                            {
+                              type: 'list',
+                              name: 'nameOptions',
+                              message: 'Choose the employee you woild like to update',
+                              choices: questionArr[0]
+                             },
+                             {
+                              type: 'list',
+                              name: 'roleOptions',
+                              message: 'Choose which role they will will change',
+                              choices: questionArr[1]
+                             }
+            ]).then((data)=>{
+              let inputs = data
+              queries.updateRole(inputs)
+              init();
+            })
+        })
+        
+      })
     }
   })
 }
 
+
+
 init();
+
+// switch (data.options) {
+//   case 'view all departments':
+//     daodnadas
+//     break;
+//   case 'view all roles':
+//     sdkfhsjdkf
+//     break
+//   default:
+//     break;
+// }

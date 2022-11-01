@@ -16,30 +16,52 @@ function viewAllRoles () {
 }
 
 function viewAllEmployees() {
-    let viewAllSQL = connection.promise().query('SELECT * FROM role')
+    let viewAllSQL = connection.promise().query('SELECT * FROM employee')
     return viewAllSQL
 }
 
 function addDepartment(data){
-    let sql = `'INSERT INTO department( id, department_name) VALUES(6, ${data.departmentName});'`
+
+    console.log(data.departmentName)
+    let sql = `INSERT INTO department( department_name) VALUES(${data});`
+
+    console.log(sql)
     
     return connection.promise().query(sql)
 
 }
 
-function addRole() {
-    let sql = `INSERT INTO role(id, title, salary, depratment_id) VALUES( 6, ` 
+function addRole(inputs) {
+
+    console.log(inputs)
+    let sql = `INSERT INTO role( title, salary, department_id) VALUES( '${inputs.roleName}', ${inputs.roleSalary}, ${inputs.roleDepartment})` 
+
+   return connection.promise().query(sql)
+}
+function addEmployee (inputs) {
+    let sql = `INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES( '${inputs.employeeFirstName}', '${inputs.employeeLastName}', ${inputs.employeeRole}, ${inputs.employeeManager})`
 
     return connection.promise().query(sql)
-}
-function addEmployee () {
 
 }
 
-function addEmployeeRole(){
+function selectEmployeeNames(){
+    let sql = 'SELECT first_name, last_name FROM employee;'
+    return connection.promise().query(sql)
 
 }
+function selectRoleName (){
+    let sql ='SELECT id,title FROM role'
+    return connection.promise().query(sql)
+ }
 
+ function updateRole (inputs){
 
-module.exports = { viewAllDepartments, viewAllRoles, viewAllEmployees, addRole, addEmployee, addEmployeeRole, addDepartment
+    console.log(inputs)
+    let sql = `UPDATE employee SET role_id = ${inputs.roleOptions} WHERE last_name = '${inputs.nameOptions};'`
+
+    return connection.promise().query(sql)
+ }
+
+module.exports = { viewAllDepartments, viewAllRoles, viewAllEmployees, addRole, addEmployee, addDepartment, selectEmployeeNames, selectRoleName, updateRole
 }

@@ -6,7 +6,7 @@ const addEmployeeQuestions = [
     },
     {
         type: 'input',
-        name: 'emplpoyeeLastName',
+        name: 'employeeLastName',
         message: "Please enter the employee's last name."
     },
     {
