@@ -2,7 +2,7 @@ const init = require('../server');
 const connection = require('./connections');
 
 
-
+//functions to be called for all SQL queries
 function viewAllDepartments () {
    let viewAllSQL = connection.promise().query('SELECT * FROM department') 
     return viewAllSQL

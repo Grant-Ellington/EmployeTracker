@@ -1,3 +1,5 @@
+//questions for updating departments
+
 const addDepartmentQuestions = [
     {
         type: 'input',

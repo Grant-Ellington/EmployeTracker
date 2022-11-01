@@ -1,3 +1,5 @@
+//starting questions for application
+
 const startingQuestion = [
     {
         type: 'list',

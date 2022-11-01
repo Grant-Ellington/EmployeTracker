@@ -7,9 +7,13 @@ const addDepartmentQuestions = require('./questions/addDepartmentQuestions');
 const addEmployeeQuestions = require('./questions/addEmployeeQuestions');
 const addRoleQuestions = require('./questions/addRoleQuestions');
 const startingQuestions = require('./questions/startingQuestions');
-const updateEmployeeQuestions = require('./questions/updateEmployeeRoleQuestions');
+
+//require for query functions
 const queries = require('./db/queries')
+//init function to start application
 function init (){
+
+  //starting questions which uses if else statements to execute different functionalities 
   inquirer.prompt(startingQuestions).then((data)=>{
     if(data.options === 'view all departments'){
       queries.viewAllDepartments().then((data)=>{
@@ -17,6 +21,7 @@ function init (){
         console.table(alldepartments)
         init();
       })
+      //allroles- uses seleect all queries  via queries file 
     }else if(data.options === 'view all roles'){
       queries.viewAllRoles().then((data)=> {
         let sql = data[0]
@@ -29,10 +34,11 @@ function init (){
         console.table(sql)
         init();
       })
+      //uses questions to add departments/role/ employee.
     }else if(data.options === 'add a department') {
       inquirer.prompt(addDepartmentQuestions).then((data)=> {
         //console.log(JSON.stringify(data.departmentName) + 'help')
-        queries.addDepartment(JSON.stringify(data.departmentName))
+        queries.addDepartment(JSON.stringify(data.departmentName))// needs strigify because coming back undefined
         init();
       })
     }else if(data.options === 'add a role'){
@@ -51,19 +57,19 @@ function init (){
       queries.selectRoleName().then((data)=>{
         let options = data[0]
         let roleArr = []
-        options.forEach((options)=>roleArr.push(`${options.id} `))
+        options.forEach((options)=>roleArr.push(`${options.id} `))//creates template literal for terminal diplay of options
         return roleArr
       }).then((data)=>{
         roleOptions = data
         queries.selectEmployeeNames().then((data)=>{
           let options = data[0]
           let employeeArr = []
-          options.forEach((options)=>employeeArr.push(`${options.last_name}`))
+          options.forEach((options)=>employeeArr.push(`${options.last_name}`))// same as previous but form names
           questionArr = [employeeArr, roleOptions]
           return questionArr
         }).then((data)=>{
           let questionArr = data
-          inquirer.prompt([
+          inquirer.prompt([// the question array for prompt on what to update
                             {
                               type: 'list',
                               name: 'nameOptions',
@@ -78,7 +84,7 @@ function init (){
                              }
             ]).then((data)=>{
               let inputs = data
-              queries.updateRole(inputs)
+              queries.updateRole(inputs)//query which updates
               init();
             })
         })

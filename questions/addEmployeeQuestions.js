@@ -1,3 +1,5 @@
+//questions for adding an employee
+
 const addEmployeeQuestions = [
     {
         type: 'input',
