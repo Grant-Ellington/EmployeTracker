@@ -67,5 +67,20 @@ Below is how you add the role to database using queries for the queries.js.
 Below is the function that executes the updates.
 ![Update](./img/Updaterole.png)
 
+Below are video examples of the program running.
 
+
+https://user-images.githubusercontent.com/109107643/199330720-bd4ddd00-e98d-4786-8813-9f02307a397c.mov
+
+
+
+
+
+https://user-images.githubusercontent.com/109107643/199330736-57bb1040-ac8a-4b89-9d92-789327ebb973.mov
+
+
+
+
+
+https://user-images.githubusercontent.com/109107643/199330764-777f4629-3ee7-49d0-b881-43e38fba6a84.mov
 
